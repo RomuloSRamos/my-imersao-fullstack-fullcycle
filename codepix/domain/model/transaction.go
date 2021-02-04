@@ -26,15 +26,16 @@ type Transactions struct {
 }
 
 type Transaction struct {
-	Base              `valid:"required"`
-	AccountFrom       *Account `valid:"-"`
-	AccountFromID     string   `gorm:"column:account_from_id;type:uuid;" valid:"notnull"`
-	Amount            float64  `json:"amount" gorm:"type:float" valid:"notnull"`
-	PixKeyTo          *PixKey  `valid:"-"`
-	PixKeyIdTo        string   `gorm:"column:pix_key_id_to;type:uuid;" valid:"notnull"`
-	Status            string   `json:"status" gorm:"type:varchar(20)" valid:"notnull"`
-	Description       string   `json:"description" gorm:"type:varchar(255)" valid:"-"`
-	CancelDescription string   `json:"cancel_description" gorm:"type:varchar(255)" valid:"-"`
+	Base          `valid:"required"`
+	AccountFrom   *Account `valid:"-"`
+	AccountFromID string   `gorm:"column:account_from_id;type:uuid;" valid:"notnull"`
+	Amount        float64  `json:"amount" gorm:"type:float" valid:"notnull"`
+	PixKeyTo      *PixKey  `valid:"-"`
+	/*id prara relacionamento do ORM*/
+	PixKeyIdTo        string `gorm:"column:pix_key_id_to;type:uuid;" valid:"notnull"`
+	Status            string `json:"status" gorm:"type:varchar(20)" valid:"notnull"`
+	Description       string `json:"description" gorm:"type:varchar(255)" valid:"-"`
+	CancelDescription string `json:"cancel_description" gorm:"type:varchar(255)" valid:"-"`
 }
 
 func init() {

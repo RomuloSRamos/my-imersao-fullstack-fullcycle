@@ -21,9 +21,10 @@ func init() {
 }
 
 type PixKey struct {
-	Base      `valid:"required"`
-	Kind      string   `json:"kind" gorm:"type:varchar(20)" valid:"notnull"`
-	Key       string   `json:"key" gorm:"type:varchar(255)" valid:"notnull"`
+	Base `valid:"required"`
+	Kind string `json:"kind" gorm:"type:varchar(20)" valid:"notnull"`
+	Key  string `json:"key" gorm:"type:varchar(255)" valid:"notnull"`
+	/*id para o relacionamento do ORM chave estrangeira*/
 	AccountID string   `gorm:"column:account_id;type:uuid;not null" valid:"-"`
 	Account   *Account `valid:"-"`
 	Status    string   `json:"status" gorm:"type:varchar(20)" valid:"notnull"`

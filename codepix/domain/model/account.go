@@ -13,11 +13,12 @@ func init() {
 
 type Account struct {
 	Base      `valid:"required"`
-	OwnerName string    `gorm:"column:owner_name;type:varchar(255);not null" valid:"notnull"`
-	Bank      *Bank     `valid:"-"`
-	BankID    string    `gorm:"column:bank_id;type:uuid;not null" valid:"-"`
-	Number    string    `json:"number" gorm:"type:varchar(20)" valid:"notnull"`
-	PixKeys   []*PixKey `gorm:"ForeignKey:AccountID" valid:"-"`
+	OwnerName string `gorm:"column:owner_name;type:varchar(255);not null" valid:"notnull"`
+	Bank      *Bank  `valid:"-"`
+	/*id do banco para relacionamento no ORM cheve estrengeira*/
+	BankID  string    `gorm:"column:bank_id;type:uuid;not null" valid:"-"`
+	Number  string    `json:"number" gorm:"type:varchar(20)" valid:"notnull"`
+	PixKeys []*PixKey `gorm:"ForeignKey:AccountID" valid:"-"`
 }
 
 func (account *Account) isValid() error {
